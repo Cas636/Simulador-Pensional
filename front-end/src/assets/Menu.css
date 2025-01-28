@@ -1,0 +1,59 @@
+#navigation { 
+    background-color: #e8f6e5; /* Fondo verde pastel claro */
+    overflow: auto;
+    display: block;
+    float: left;
+    width: 100%;
+  }
+  
+  #navigation * {
+    padding: 0;
+    margin: 0;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 1em;
+  }
+  
+  #navigation ul {
+    display: block;
+    float: left;
+    padding: 10px 0 0 0;
+  }
+  
+  #navigation ul li {
+    list-style: none;
+    float: left;
+    margin: 0 0 0 5px;
+  }
+  
+  #navigation ul li a {
+    background-color: #d0ebd0; /* Fondo verde pastel medio */
+    display: block;
+    padding: 0 15px 0 0;
+    color: #2e4a2a; /* Texto verde oscuro */
+    text-decoration: none;
+  }
+  
+  #navigation ul li a span {
+    background-color: #d0ebd0; /* Fondo verde pastel medio */
+    display: block;
+    padding: 10px 0 10px 15px;
+  }
+  
+  #navigation ul li a:hover {
+    background-color: #4caf50; /* Fondo verde brillante al pasar el mouse */
+    color: #FFF; /* Texto blanco al pasar el mouse */
+    text-decoration: underline;
+  }
+  
+  #navigation ul li a:hover span {
+    background-color: #4caf50; /* Fondo verde brillante al pasar el mouse */
+  }
+  
+  #home #navigation ul li.home a {
+    background-color: #a8d08d; /* Fondo verde más oscuro cuando se selecciona */
+    color: #6a6a6a; /* Texto gris cuando está seleccionado */
+  }
+  
+  #home #navigation ul li.home a span {
+    background-color: #a8d08d; /* Fondo verde más oscuro cuando se selecciona */
+  }
