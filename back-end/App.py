@@ -18,7 +18,7 @@ def simulacion():
         "full_name": f"{data.get('nombre')}  {data.get('apellido')}",
         "age": f"{calcular_edad(data.get('fechaNacimiento'))}",  # Simulamos la edadcalcular_edad(data.get("fechaNacimiento"))
         "contributed_weeks": f"{data.get('semanasCotizadas')}", 
-        "salary": data.get('salario'),
+        "salary": data.get('salary'),
         "affiliation_entity": data.get('entidadAfiliado'),
         "estimated_pension": 2500  # Pensiones estimadas simuladas
     }
