@@ -1,31 +1,27 @@
-import React, { useEffect, useState } from "react";
-import { adaptSimulationResponse } from "../adapters/apiAdapter";
+import React from "react";
+import '../assets/SimulationResult.css';  // Asegúrate de importar el archivo CSS
 
-const SimulationResult = ({ simulationData }) => {
-  const [formattedData, setFormattedData] = useState(null);
+const SimulationResult = ({ userName, simulationData }) => {
+  if (!simulationData) return <p>Cargando resultados...</p>;
 
-  useEffect(() => {
-    if (simulationData) {
-      const adaptedData = adaptSimulationResponse(simulationData);
-      setFormattedData(adaptedData);
-      
-    }
-  }, [simulationData]);
-
-  if (!formattedData) return <p>Cargando resultados...</p>;
-  console.log(simulationData); 
   return (
-    simulationData && (
-      <div>
-        <h2>Resultados de la Simulación</h2>
-        <p>Nombre: {simulationData.nombre} {simulationData.apellido}</p>
-        <p>Edad: {simulationData.edad} años</p>
-        <p>Semanas Cotizadas: {simulationData.semanasCotizadas}</p>
-        <p>Salario: ${simulationData.salario}</p>
-        <p>Entidad Afiliada: {simulationData.afiliado}</p>
-        <p>Pensión Estimada: ${simulationData.pensionEstimado}</p>
-      </div>
-    )
+    <div className="simulation-result">
+      <h2 className="result-title">Resultados de la Simulación para <span className="user-name">{userName}</span></h2>
+      {simulationData.map((regimenData, index) => (
+        <div key={index} className="regimen-section">
+          <h3 className="regimen-title">Régimen: {regimenData.regimen}</h3>
+          <ul className="options-list">
+            {regimenData.opciones.map((opcion, idx) => (
+              <li key={idx} className="option-item">
+                <strong className="option-priority">Prioridad {opcion.prioridad}:</strong> 
+                <span className="option-weeks">{opcion.semanas} semanas</span> - 
+                <span className="option-amount">${opcion.monto.toFixed(2)}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
   );
 };
 

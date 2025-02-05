@@ -7,15 +7,17 @@ import '../assets/Home.css';
 const Home = () => {
   const [formData, setFormData] = useState(null); // 🔹 Observer → Observamos cambios en formData
   const [simulationData, setSimulationData] = useState(null);
+  const [userName, setUserName] = useState(""); // Estado para almacenar el nombre del usuario
 
   const handleSimulationSubmit = (data) => {
     setFormData(data); // Se activa el useEffect cuando formData cambia
+    setUserName(data.UserName); // Guardamos el nombre del usuario cuando se envía el formulario
   };
 
   useEffect(() => {
     if (formData) {
       console.log("📡 Enviando datos a la API...", formData);
-      fetch("http://127.0.0.1:5000/api/simulacion", {
+      fetch("http://localhost:8080/api/pension/v1/simulate", {
         method: "POST",
           body: JSON.stringify(formData),
           headers: { "Content-Type": "application/json" },
@@ -30,13 +32,12 @@ const Home = () => {
     }
   }, [formData]);
 
-
   return (
     <div className="Home">
       <section id="simulador">
         <p>Completa el siguiente formulario para conocer tu proyección pensional.</p>
         <SimulationForm onSubmit={handleSimulationSubmit} />
-        {simulationData && <SimulationResult simulationData={simulationData} />}
+        {simulationData && <SimulationResult userName={userName} simulationData={simulationData} />} {/* Pasamos el nombre del usuario */}
       </section>
     </div>
   );

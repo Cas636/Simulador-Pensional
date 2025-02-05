@@ -1,0 +1,75 @@
+/* Estilo para el contenedor principal */
+.simulation-result {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  /* Título de los resultados */
+  .result-title {
+    font-size: 1.5rem;
+    color: #2c6e49; /* Cambiado de azul a verde oscuro */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Nombre del usuario */
+  .user-name {
+    font-weight: bold;
+    color: #0e1f15; /* Cambiado de azul a verde oscuro */
+  }
+  
+  /* Sección de régimen */
+  .regimen-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Título del régimen */
+  .regimen-title {
+    font-size: 1.25rem;
+    color: #2c6e49; /* Cambiado de azul a verde oscuro */
+    margin-bottom: 10px;
+  }
+  
+  /* Lista de opciones */
+  .options-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .option-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #f1f3f5;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Estilo para la prioridad de la opción */
+  .option-priority {
+    font-weight: bold;
+    color: #2c6e49; /* Cambiado de azul a verde oscuro */
+  }
+  
+  /* Estilo para las semanas y monto */
+  .option-weeks,
+  .option-amount {
+    color: #495057;
+    font-size: 1.1rem;
+  }
+  
+  /* Monto en negrita */
+  .option-amount {
+    font-weight: bold;
+    color: #28a745;
+  }
+  

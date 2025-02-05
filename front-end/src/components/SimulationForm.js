@@ -16,7 +16,7 @@ const SimulationForm = ({ onSubmit }) => {
   const [isChanged, setIsChanged] = useState(false);
 
   useEffect(() => {
-    console.log("📢 Formulario actualizado:", formData);
+    // console.log("📢 Formulario actualizado:", formData);
   }, [formData]);
 
   const handleChange = (e) => {
@@ -33,24 +33,24 @@ const SimulationForm = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!isChanged) return; // No envía si no hubo cambios
+    if (!isChanged) return;
 
     const formattedDate = new Date(formData.DateOfBirth).toISOString();
 
     const formattedData = {
-      Salary: formData.Salary,
+      Salary: parseFloat(formData.Salary),  // Convertir a número
       DateOfBirth: formattedDate,
-      WeeksContributed: formData.WeeksContributed,
+      WeeksContributed: parseInt(formData.WeeksContributed, 10), // Convertir a entero
       Gender: formData.Gender === "hombre" ? "M" : "F",
-      AccumulatedFunds: formData.AccumulatedFunds,
+      AccumulatedFunds: parseFloat(formData.AccumulatedFunds), // Convertir a número
       HasBeneficiary: formData.HasBeneficiary === "si",
       TypeBeneficiary: formData.TypeBeneficiary || null,
+      UserName: formData.UserName, // Aseguramos que se incluya el nombre del usuario
     };
 
-    console.log("📤 Enviando datos a la API:", formattedData);
-    onSubmit(formattedData);
-    
-    setIsChanged(false); // Después de enviar, lo bloquea hasta que el usuario modifique algo
+    onSubmit(formattedData);  // Enviamos los datos al componente superior
+
+    setIsChanged(false);
   };
 
   return (
