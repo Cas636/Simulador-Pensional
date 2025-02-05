@@ -27,7 +27,7 @@ func HandleSimulation(w http.ResponseWriter, r *http.Request) {
 	var employee models.Employee
 
 	if err := json.NewDecoder(r.Body).Decode(&employee); err != nil {
-		sendJSONError(w, "Invalid request payload", http.StatusBadRequest)
+		sendJSONError(w, "Invalid request payload (101)", http.StatusBadRequest)
 		return
 	}
 
