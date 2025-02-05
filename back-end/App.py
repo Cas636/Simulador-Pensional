@@ -12,21 +12,11 @@ def simulacion():
     data = request.get_json()
 
     response = {
-<<<<<<< HEAD
-        "full_name": f"{data.get('nombre')}  {data.get('apellido')}",
-        "age": f"{calcular_edad(data.get('fechaNacimiento'))}",  # Simulamos la edadcalcular_edad(data.get("fechaNacimiento"))
-        "contributed_weeks": f"{data.get('semanasCotizadas')}", 
-        "salary": data.get('salary'),
-        "affiliation_entity": data.get('entidadAfiliado'),
-        "estimated_pension": 2500  # Pensiones estimadas simuladas
-=======
-        "full_name": f"{data.get('UserName', '')}",
         "age": calcular_edad(data.get("DateOfBirth", "2000-01-01")),
         "contributed_weeks": data.get('WeeksContributed', 0),
         "salary": data.get('Salary', 0),
         "affiliation_entity": "Entidad Default",  # Puedes cambiarlo si lo tienes
         "estimated_pension": 2500  # Valor simulado
->>>>>>> d1bd61e (Guardando cambios locales antes de actualizar)
     }
 
     return jsonify(response), 200
