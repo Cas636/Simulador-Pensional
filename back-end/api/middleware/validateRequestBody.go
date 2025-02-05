@@ -48,21 +48,24 @@ func ValidateEmployeeMiddleware(next http.Handler) http.Handler {
 			sendJSONError(w, "Weeks contributed must be at least 0", http.StatusBadRequest)
 			return
 		}
-		if employee.Gender == "" || !(employee.Gender == "M" || employee.Gender == "F"){
+		if employee.Gender == "" || !(employee.Gender == "M" || employee.Gender == "F") {
 			sendJSONError(w, "Gender is required or invalid", http.StatusBadRequest)
-		return
+			return
 		}
 		if employee.AccumulatedFunds < 0 {
 			sendJSONError(w, "Accumulated funds must be at least 0", http.StatusBadRequest)
 			return
 		}
-		if employee.HasBeneficiary && employee.TypeBeneficiary == "" {
-			sendJSONError(w, "TypeBeneficiary is required when HasBeneficiary is true", http.StatusBadRequest)
-			return
-		}
-		_, exists := utils.BeneficiaryPercentageAdjustmentFemale[employee.TypeBeneficiary]
-		if !exists {
-			sendJSONError(w, "Value of the TypeBeneficiary is invalid", http.StatusBadRequest)
+		if employee.HasBeneficiary {
+			if employee.TypeBeneficiary == "" {
+				sendJSONError(w, "TypeBeneficiary is required when HasBeneficiary is true", http.StatusBadRequest)
+				return
+			}
+			_, exists := utils.BeneficiaryPercentageAdjustmentFemale[employee.TypeBeneficiary]
+			if !exists {
+				sendJSONError(w, "Value of the TypeBeneficiary is invalid", http.StatusBadRequest)
+				return
+			}
 		}
 
 		next.ServeHTTP(w, r)
