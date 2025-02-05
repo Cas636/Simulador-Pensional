@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import SimulationForm from "../components/SimulationForm.js";
 import SimulationResult from "../components/SimulationResult.js";
@@ -8,10 +9,12 @@ const Home = () => {
   const [formData, setFormData] = useState(null); // 🔹 Observer → Observamos cambios en formData
   const [simulationData, setSimulationData] = useState(null);
   const [userName, setUserName] = useState(""); // Estado para almacenar el nombre del usuario
+  const [showReloadButton, setShowReloadButton] = useState(false);
 
   const handleSimulationSubmit = (data) => {
-    setFormData(data); // Se activa el useEffect cuando formData cambia
-    setUserName(data.UserName); // Guardamos el nombre del usuario cuando se envía el formulario
+    setFormData(data);
+    setUserName(data.UserName);
+    setShowReloadButton(true); // 🔹 Muestra el botón después del envío
   };
 
   useEffect(() => {
@@ -32,12 +35,22 @@ const Home = () => {
     }
   }, [formData]);
 
+  
   return (
     <div className="Home">
       <section id="simulador">
         <p>Completa el siguiente formulario para conocer tu proyección pensional.</p>
         <SimulationForm onSubmit={handleSimulationSubmit} />
-        {simulationData && <SimulationResult userName={userName} simulationData={simulationData} />} {/* Pasamos el nombre del usuario */}
+        {simulationData && <SimulationResult userName={userName} simulationData={simulationData} />}
+        
+        {/* 🔹 Botón que se muestra después de enviar el formulario */}
+        <button 
+          type="button" 
+          onClick={() => window.location.reload()} 
+          hidden={!showReloadButton} 
+        >
+          Hacer otra Simulación
+        </button>
       </section>
     </div>
   );
