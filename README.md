@@ -5,6 +5,7 @@ Este proyecto es una aplicación web que permite a los usuarios calcular y compa
 ## Arquitectura
 
 La aplicación sigue una arquitectura de microservicios y está diseñada para ser desplegada en la nube mediante un enfoque basado en SOA (Service-Oriented Architecture). El backend proporciona una API REST para el cálculo y simulación de pensiones, mientras que el frontend ofrece una interfaz interactiva para que los usuarios ingresen sus datos y visualicen los resultados.
+![Arquitectura del sistema](front-end/public/imagen_2025-02-05_222501718.png)
 
 ## Tecnologías Utilizadas
 
